@@ -1,0 +1,58 @@
+{
+    "name": "therealjanjanssens/pakka-core",
+    "description": "",
+    "keywords": [
+        "therealjanjanssens",
+        "pakka"
+    ],
+    "homepage": "https://github.com/therealjanjanssens/pakka-core",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan Janssens",
+            "email": "hello@janjanssens.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "laravel/framework": "^8.12"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^5.3",
+        "orchestra/testbench": "^6.0",
+        "pestphp/pest": "^1.18",
+        "pestphp/pest-plugin-laravel": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "TheRealJanJanssens\\PakkaCore\\": "src",
+            "TheRealJanJanssens\\PakkaCore\\Database\\Factories\\": "database/factories",
+            "TheRealJanJanssens\\PakkaCore\\Database\\Seeders\\": "database/seeders"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TheRealJanJanssens\\PakkaCore\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/pest --no-coverage",
+        "test-coverage": "vendor/bin/pest --coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TheRealJanJanssens\\PakkaCore\\PakkaServiceProvider"
+            ],
+            "aliases": {
+                "Pakka": "TheRealJanJanssens\\PakkaCore\\PakkaFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

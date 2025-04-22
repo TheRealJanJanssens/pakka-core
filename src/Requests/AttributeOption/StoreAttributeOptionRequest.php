@@ -16,7 +16,6 @@ class StoreAttributeValueRequest extends BaseRequest
     {
         return [
             'input_id'      => ['required', 'string'],
-            'item_id'       => ['required', 'string'],
             'language_code' => ['nullable', 'string', 'max:10'],
             'option_id'     => ['nullable', 'string'],
             'value'         => ['nullable', 'string'],

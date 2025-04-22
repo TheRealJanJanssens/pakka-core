@@ -26,37 +26,16 @@ class AttributeOption extends Model
         'value',
     ];
 
-    /*
-    |------------------------------------------------------------------------------------
-    | Validations
-    |------------------------------------------------------------------------------------
-    */
-    public static function rules($update = false, $id = null)
-    {
-        $commun = [
-            'input_id' => "required",
-            'option_id' => "required",
-            'language_code' => "required",
-            'value' => "required",
-
-        ];
-
-        if ($update) {
-            return $commun;
-        }
-
-        return array_merge($commun, [
-            'input_id' => "required",
-            'option_id' => "required",
-            'language_code' => "required",
-            'value' => "required",
-        ]);
-    }
-
     public function input()
     {
         return $this->hasOne(AttributeInput::class, 'input_id', 'input_id');
     }
+
+    /**
+     * Legacy Code
+     *
+     * TODO: phase this out
+     */
 
     /*
     |--------------------------------------------------------------------------

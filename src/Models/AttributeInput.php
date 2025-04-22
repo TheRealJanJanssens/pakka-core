@@ -30,36 +30,21 @@ class AttributeInput extends Model
         'updated_at',
     ];
 
-    /*
-    |------------------------------------------------------------------------------------
-    | Validations
-    |------------------------------------------------------------------------------------
-    */
-    public static function rules($update = false, $id = null)
+    public function options()
     {
-        $commun = [
-            'set_id' => "required",
-            'name' => "required",
-            'type' => "required",
-
-        ];
-
-        if ($update) {
-            return $commun;
-        }
-
-        return array_merge($commun, [
-            'set_id' => "required",
-            'name' => "required",
-            'type' => "required",
-        ]);
+        return $this->hasMany(AttributeOption::class, 'input_id', 'input_id');
     }
 
-    public function getOptions()
+    public function values()
     {
-        // Accessing comments posted by a user
-        return $this->hasMany(AttributeOption::class);
+        return $this->hasMany(AttributeValue::class, 'input_id', 'input_id');
     }
+
+    /**
+     * Legacy Code
+     *
+     * TODO: phase this out
+     */
 
     public static function prepareAttributes($array)
     {

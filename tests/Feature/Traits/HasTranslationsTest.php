@@ -3,13 +3,15 @@
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use TheRealJanJanssens\PakkaCore\Models\Page;
 use TheRealJanJanssens\PakkaCore\Models\Translation;
+use function Pest\Laravel\{config};
+
 
 uses(RefreshDatabase::class);
 
-beforeEach(function () {
-    // Here you can optionally seed default languages or configs
-    config()->set('app.fallback_locale', 'en');
-});
+// beforeEach(function () {
+//     // Here you can optionally seed default languages or configs
+//     config()->set('app.fallback_locale', 'en');
+// });
 
 it('creates empty translations on page creation', function () {
     $page = Page::factory()->create([

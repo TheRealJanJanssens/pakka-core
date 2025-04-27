@@ -18,7 +18,7 @@ it('creates empty translations on page creation', function () {
 
     expect(Translation::where('translation_id', 1)
         ->where('input_name', 'name')
-        ->where('locale', 'en')
+        ->where('language_code', 'en')
         ->exists())->toBeTrue();
 });
 
@@ -30,7 +30,7 @@ it('returns translated attribute value dynamically', function () {
     Translation::create([
         'translation_id' => 1,
         'input_name'     => 'name',
-        'locale'         => 'en',
+        'language_code'  => 'en',
         'value'          => 'Test Title',
     ]);
 
@@ -47,7 +47,7 @@ it('falls back to fallback locale if translation missing', function () {
     Translation::create([
         'translation_id' => 2,
         'input_name'     => 'name',
-        'locale'         => 'en',
+        'language_code'  => 'en',
         'value'          => 'Fallback Title',
     ]);
 
@@ -76,7 +76,7 @@ it('can scope pages that have a translation', function () {
     Translation::create([
         'translation_id' => 4,
         'input_name'     => 'name',
-        'locale'         => 'en',
+        'language_code'  => 'en',
         'value'          => 'Scoped Title',
     ]);
 

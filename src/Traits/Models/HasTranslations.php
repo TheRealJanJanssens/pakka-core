@@ -170,7 +170,7 @@ trait HasTranslations
                     $translations[] = [
                         'translation_id' => $translationId,
                         'input_name'     => $attribute,
-                        'locale'         => $this->getFallbackLocale(),
+                        'language_code'  => $this->getFallbackLocale(),
                         'value'          => '',
                     ];
                 }

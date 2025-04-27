@@ -1,6 +1,6 @@
 <?php
 
-namespace TheRealJanJanssens\Pakka\Models;
+namespace TheRealJanJanssens\PakkaCore\Models;
 
 use Cache;
 use Illuminate\Database\Eloquent\Model;
@@ -8,10 +8,19 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Schema;
 use Session;
+use TheRealJanJanssens\PakkaCore\Traits\Models\HasTranslations;
 
 class Page extends Model
 {
-    use Notifiable;
+    use Notifiable, HasTranslations;
+
+    public array $translatable = [
+        'slug',
+        'name',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -60,6 +69,12 @@ class Page extends Model
 
     public static function getPageBySlug($slug)
     {
+        // Refactor example
+        // Page::with(['translations'])
+        //     ->whereRelation('translations', 'slug', '=', $slug)
+        //     ->whereRelation('translations', 'language_code', '=', $locale)
+        //     ->get();
+
         $locale = app()->getLocale();
 
         $result = Page::select([

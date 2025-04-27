@@ -1,6 +1,6 @@
 <?php
 
-namespace TheRealJanJanssens\Pakka\Models;
+namespace TheRealJanJanssens\PakkaCore\Models;
 
 use Cache;
 use Illuminate\Database\Eloquent\Model;
@@ -10,39 +10,12 @@ class Translation extends Model
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'text','language_code','translation_id','input_name',
+        'text',
+        'language_code',
+        'translation_id',
+        'input_name',
     ];
-
-    /*
-    |------------------------------------------------------------------------------------
-    | Validations
-    |------------------------------------------------------------------------------------
-    */
-    public static function rules($update = false, $id = null)
-    {
-        $commun = [
-            'text' => "required",
-            'language_code' => 'required',
-            'translation_id' => 'required',
-
-        ];
-
-        if ($update) {
-            return $commun;
-        }
-
-        return array_merge($commun, [
-            'text' => 'required',
-            'language_code' => 'required',
-            'translation_id' => 'required',
-        ]);
-    }
 
     public static function getTranslation($string)
     {
